@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta http-equiv="X-UA-Compatible" content="ie-edge" >
+    <link rel="stylesheet" href="style.css" type="text/css" >
+    <link rel="icon" href="favicon.ico?" type="image/x-icon">
+    <title>MattWawiorka.com</title>
+</head>
+<body>
+    <div class="blank-screen"></div>
+    <div class="welcome">
+        <div>
+            <h1>Welcome to</h1>
+            <h1>MattWawiorka.com</h1>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div class="container">
+        <div class="home">
+            <div class="warning" id="restart-warning">
+                <div class="toolbar"></div>
+                <p>Are you sure you want to refresh MattWawiorka.com?</p>
+                <div class="center-btn-grp">
+                    <button id="restart-yes">Refresh</button>
+                    <button id="restart-no">Cancel</button>
+                </div>
+            </div>
+            <div class="warning" id="shutdown-warning">
+                <div class="toolbar"></div>
+                <p>Are you sure you want to shut down MattWawiorka.com?</p>
+                <div class="center-btn-grp">
+                    <button id="shutdown-yes">Shut Down</button>
+                    <button id="shutdown-no">Cancel</button>
+                </div>
+            </div>
+
+            <div class="desktop-icon draggable" id="resume-icon">
+                <input class="clickable" data-window="resume" type="image" src="/images/resume.png" />
+                <p>Resume</p>
+            </div>
+            <div class="desktop-icon draggable" id="projects-icon">
+                <input class="clickable" data-window="projects" type="image" src="/images/folder.png" />
+                <p>Projects</p>
+            </div>
+            <div class="desktop-icon draggable" id="photos-icon">
+                <input class="clickable" data-window="photos" type="image" src="/images/folder.png" />
+                <p>Photos</p>
+            </div>
+           
+            <div class="window-container" id="resume">
+                <div class="toolbar draggable">
+                    <span>Resume</span>
+                    <button class="toolbar-btn x-btn" data-window="resume">X</button>
+                    <button class="toolbar-btn max-btn" data-window="resume">&#9633;</button>
+                </div>
+                <div class="window">
+                    <div class="window-content resume">
+                        <h1>Matthew J. Wawiorka</h1>
+                        <p class="contact">mattwawiorka@gmail.com | 920-427-3775</p>
+                        <h2 class="title">Software Engineer</h2>
+                        <p class="purpose">Having discovered my love of programming in college, I’ve dedicated my early professional experiences to
+                            furthering my skills with hands-on programming while maximizing my education in engineering and physics. I’ve
+                            even developed an app under my own LLC in an endeavor to understand the business aspects from A to Z and look
+                            forward to being an eager contribution to the right team.</p>
+                        <h3>SKILLS</h3>
+                        <div class="skills">
+                            <ul>
+                                <li class="skill-heading">Full Stack Development</li>
+                                <li>JavaScript</li>
+                                <li>React</li>
+                                <li>HTML5, CSS3</li>
+                                <li>REST & GraphQL API</li>
+                                <li>AWS</li>
+                            </ul>
+                            <ul>
+                                <li class="skill-heading">Object Oriented Design</li>
+                                <li>C#</li>
+                                <li>Node JS</li>
+                                <li>Python</li>
+                                <li>Java</li>
+                            </ul>
+                            <ul>
+                                <li>Customer Service</li>
+                                <li>Linux</li>
+                                <li>MySQL</li>
+                                <li>Git/GitHub</li>
+                            </ul>
+                        </div>
+                        <h3>EXPERIENCE</h3>
+                        <h4>Technical Solutions Engineer</h4>
+                        <p>Epic Systems | Sept 2018 - Sept 2019</p>
+                        <ul>
+                            <li>Maintained important customer relationships on a daily basis</li>
+                            <li>Assisted in system builds and received recognition for my contributions from colleagues</li>
+                            <li>Contributed to development projects in the MUMPS programming language – was recognized for my strong
+                                programming skills</li>
+                        </ul>
+                        <br style="line-height: 0.5em;"/>
+                        <h4>Embedded Engineering Co-op</h4>
+                        <p>Extreme Engineering Solutions | May 2017 – Dec 2017</p>
+                        <ul>
+                            <li>Improved department workflow by developing an inventory tracking web application</li>
+                            <li>Consistently met team deadlines for completing qualification testing on single board computers</li>
+                            <li>Leveraged my programming skills to develop Bash and Python scripts for embedded software testing</li>
+                        </ul>
+                        <br style="line-height: 0.5em;"/>
+                        <h4>Electrical Engineering Co-op</h4>
+                        <p>Verso Paper Mill | January 2016 – August 2016</p>
+                        <ul>
+                            <li>Designed and managed the construction of a PLC cabinet, improving functionality of one of the largest
+                                machines in the mill</li>
+                            <li>Wrote ladder logic for implementing new mill processes or solving existing issues</li>
+                            <li>Improved the engineering staff’s ability to troubleshoot network issues through documentation</li>
+                        </ul>
+                        <h3>EDUCATION</h3>
+                        <p><span class="degree">Electrical Engineering, B.S.</span> | University of Wisconsin – Madison | Highest Honors</p>
+                        <p><span class="degree">Physics, B.S.</span> | University of Wisconsin – La Crosse | Highest Honors</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window-container" id="projects">
+                <div class="toolbar draggable">
+                    <span>Projects</span>
+                    <button class="toolbar-btn x-btn" data-window="projects">X</button>
+                </div>
+                <div class="window">
+                    <div class="window-content folder">
+                        <div>
+                            <a href="https://rec-board.com/About" target="_blank">
+                                <img src="/images/rec-board.png" alt="rec-board.com" />
+                            </a>
+                            <p>Rec-Board</p>
+                        </div>
+                        <div>
+                            <a href="https://github.com/mattwawiorka/typeRager" target="_blank">
+                                <img src="/images/typeRager.png" alt="typeRager Discord Bot" />
+                            </a>
+                            <p>typeRager</p>
+                        </div>
+                        <div>
+                            <input class="clickable" data-window="about-website" type="image" src="/images/website.png" />
+                            <p>This Site</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window-container" id="about-website">
+                <div class="toolbar draggable">
+                    <span>About MattWawiorka.com</span>
+                    <button class="toolbar-btn x-btn" data-window="about-website">X</button>
+                </div>
+                <div class="window">
+                    <div class="window-content about">
+                        <p>This website is a virtual repository of things created by me. The design is inspired by Microsoft Windows XP.</p>
+                        <p>I built the site using plain old JavaScript, HTML, and CSS. Having been using React (and loving it) I wanted to go back to the basics.</p>
+                        <p>Feel free to reach out to me at <a href="mailto:mattwawiorka@gmail.com">mattwawiorka@gmail.com</a> to discuss programming, job opportunities, or anything else you see on this site.</p>
+                        <p>Thank you for visiting, have a nice day!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window-container" id="photos">
+            <div class="toolbar draggable">
+                <span>Photos</span>
+                <button class="toolbar-btn x-btn" data-window="photos">X</button>
+            </div>
+            <div class="window">
+                <div class="window-content folder">
+                    <div>
+                        <a href="https://rec-board.com/About" target="_blank">
+                            <img src="/images/rec-board.png" alt="rec-board.com" />
+                        </a>
+                        <p>Rec-Board</p>
+                    </div>
+                    <div>
+                        <a href="https://github.com/mattwawiorka/typeRager" target="_blank">
+                            <img src="/images/typeRager.png" alt="typeRager Discord Bot" />
+                        </a>
+                        <p>typeRager</p>
+                    </div>
+                    <div>
+                        <input class="clickable" data-window="about-website" type="image" src="/images/website.png" />
+                        <p>This Site</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="start-menu" id="start-menu">
+            <div class="sub-menu"></div>
+            <div class="sub-menu">
+
+            </div>
+            <div class="sub-menu">
+                <span>Shut Down</span>
+                <input class="power-btn" id="power-btn" type="image" src="/images/power.png" />
+                <span>Refresh</span>
+                <input class="power-btn" id="restart-btn" type="image" src="/images/restart.png" />
+            </div>
+        </div>
+        
+        <footer class="taskbar">
+            <button class="start-btn" id="start-btn">start</button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,494 @@
+:root {
+    --toolbar-blue: #2562E1;
+    --toolbar-blue-light: #4E90E7;
+    --toolbar-blue-dark: #1F59D6;
+    --toolbar-blue-darkest: #1244B5;
+    --toolbar-x: #D2564A;
+    --background-white: #F9F8F6;
+    --background-grey: #EDEAD9;
+    --start-btn: #41B14B;
+    --yellow-btn: #E1A95B;
+    --light-grey: #F7F3EF;
+    --icon-blue: #4479C5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+a, u {
+    text-decoration: none;
+}
+
+.blank-screen {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-color: black;
+}
+
+.welcome {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-image: radial-gradient(var(--toolbar-blue-light), var(--toolbar-blue-darkest));
+    color: var(--background-white);
+    animation: fade-in ease 3s;
+}
+
+.welcome > div {
+    position: absolute;
+    width: max-content;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 40%;
+}
+
+.welcome h1:nth-child(1) {
+    font-size: 3em;
+}
+
+.welcome h1:nth-child(2) {
+    font-size: 6em;
+    text-align: center;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    /* animation: loading ease 4s; */
+}
+  
+.home {
+    width: 100%;
+    height: 95%;
+    background: url("/images/windows.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.desktop-icon {
+    position: absolute;
+}
+
+#resume-icon {
+    top: 300px;
+    left: 750px;
+}
+
+#projects-icon {
+    top: 325px;
+    left: 950px;
+}
+
+.desktop-icon p {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--background-white);
+    background-color: var(--icon-blue);
+}
+
+.taskbar {
+    background-image: linear-gradient(var(--toolbar-blue-light), var(--toolbar-blue-dark), var(--toolbar-blue), var(--toolbar-blue), var(--toolbar-blue), var(--toolbar-blue-dark), var(--toolbar-blue-darkest));
+    height: 5%;
+    z-index: 10;
+}
+
+.window-container {
+    position: absolute;
+    display: none;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    top: 47%;
+    left: 50%;
+    height: 850px;
+    width: 800px;
+    border: 6px solid var(--toolbar-blue);
+    border-radius: 8px;
+    border-top: none;
+    overflow: hidden;
+}
+
+.window {
+    background-color: var(--background-white);
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.window-content {
+    width: 100%;
+    height: calc(100% - 35px);
+    padding: 12px 5%;
+    overflow: hidden;
+}
+
+.toolbar {
+    background-color: var(--toolbar-blue);
+    height: 35px;
+    z-index: 10;
+    cursor: grabbing;
+    overflow: hidden;
+}
+
+.toolbar > span {
+    float: left;
+    color: var(--background-white);
+    font-weight: bolder;
+    padding-left: 12px;
+    margin-top: 8px;
+    font-size: 1.2em;
+}
+
+.toolbar-btn {
+    width: 40px;
+    height: 25px;
+    margin: 4px 2px;
+    border: 0.5px solid whitesmoke;
+    border-radius: 2px;
+    float: right;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+}
+
+.x-btn {
+    background-color: var(--toolbar-x);
+}
+
+.max-btn {
+    background-color: var(--toolbar-blue-light);
+    font-weight: bold;
+    text-align: middle;
+}
+
+.start-btn {
+    width: 175px;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: var(--start-btn);
+    border: none;
+    border-right: 2px groove darkgrey;
+    color: var(--background-white);
+    font-size: 2em;
+    font-weight: bolder;
+    font-style: italic;
+    outline: none;
+    cursor: pointer;
+}
+
+.start-menu {
+    display: none;
+    position: absolute;
+    bottom: 5%;
+    left: 0px;
+    width: 400px;
+    height: 400px;
+    background-color: var(--background-white);
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.sub-menu:nth-child(odd) {
+    height: 80px;
+    background-color: var(--toolbar-blue);
+}
+
+.sub-menu:nth-child(1) {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.sub-menu:nth-child(2) {
+    height: calc(100% - 140px);
+}
+
+.sub-menu:nth-child(3) {
+    height: 60px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.power-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    float: right;
+    margin-top: 5px;
+    outline: none;
+}
+
+.sub-menu span {
+    color: white;
+    float: right;
+    padding: 20px 6px;
+    padding-right: 16px;
+}
+
+#overlay {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: black;
+    opacity: 75%;
+}
+
+.warning {
+    display: none;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 35%;
+    left: 50%;
+    width: 600px;
+    height: 200px;
+    border-radius: 4px;
+    background-color: var(--background-grey);
+    z-index: 11;
+    border: 4px groove var(--background-grey);
+}
+
+.warning .toolbar {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    cursor: initial;
+}
+
+.warning p {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.warning button {
+    width: 100px;
+    height: 25px;
+    margin: 0 8px;
+    background-color: var(--light-grey);
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.center-btn-grp {
+    width: 250px;
+    margin: 36px auto;
+}
+
+#projects {
+    width: 500px;
+    height: 300px;
+}
+
+.folder div {
+    display: inline-block;
+    margin-top: 12px;
+    margin-left: 32px;
+}
+
+.folder div:first-of-type {
+    margin-left: 0px;
+}
+
+.folder div > p {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--background-white);
+    background-color: var(--icon-blue);
+}
+
+#about-website {
+    width: 600px;
+    height: 400px;
+}
+
+.about {
+    background-color: var(--background-grey);
+    padding: 24px 64px;
+}
+
+.about p {
+    margin-top: 24px;
+}
+
+.about p:nth-child(3) {
+    padding-bottom: 36px;
+    border-bottom: 2px solid #E0DDCF;
+}
+
+.about p:last-of-type {
+    text-align: center;
+    padding-top: 24px;
+}
+
+/*******************
+*  Resume styling  *
+*******************/
+.resume {
+    overflow: auto;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.resume h1, h2 {
+    text-align: center;
+}
+
+.contact {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.title {
+    padding-top: 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--toolbar-blue);
+}
+
+.purpose {
+    padding-top: 16px;
+}
+
+.resume h3 {
+    padding: 24px 0px 4px 0px;
+}
+
+.skills {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.skills ul {
+    /* display: inline-block; */
+    float: left;
+    width: 33%;
+    list-style-type: none;
+    padding: 0px 10px;
+}
+
+.skills ul:nth-of-type(1), ul:nth-of-type(2) {
+    border-right: 2px solid #EEEBDA;
+}
+
+.skills:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.resume > ul > li {
+    margin: 6px 18px;
+    list-style-type: square;
+}
+
+.resume > ul {
+    border: none;
+}
+
+.degree {
+    font-weight: bold;
+}
+/*******************/
+
+/*
+*   Animations
+*/
+@keyframes fade-in { 
+    0% { 
+        opacity: 0; 
+    } 
+    100% { 
+        opacity: 1; 
+    } 
+} 
+
+@keyframes fade-out { 
+    0% { 
+        opacity: 1; 
+    } 
+    100% { 
+        opacity: 0; 
+    } 
+} 
+
+@keyframes loading { 
+    0% { 
+        opacity: 0; 
+    } 
+    75% { 
+        opacity: 0; 
+    }
+    100% { 
+        opacity: 1; 
+    } 
+}
+
+/*
+*    Laptop
+*/
+@media only screen and (max-width: 1024px) {
+   
+}
+
+/*
+*    Tablet
+*/
+@media only screen and (max-width: 768px) {
+    .home {
+        background: url("/images/windows_tablet.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .desktop-icon {
+        left: 250px;
+        top: 250px;
+    }
+
+    .window-container {
+        width: 95%;
+        height: 90%;
+    }
+    
+    .window-content {
+        width: 100%;
+        height: calc(100% - 35px);
+        padding: 12px 24px 20px 24px;
+    }
+
+    .max-btn {
+        display: none;
+    }
+
+    .x-btn {
+        margin-right: 12px;
+    }
+
+    .skills {
+        width: 100%;
+    }
+}
+
+/*
+*    Phone
+*/
+@media only screen and (max-width: 600px) {
+    .skill-heading {
+        display: none;
+    }
+}
