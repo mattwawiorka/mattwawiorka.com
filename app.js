@@ -1,4 +1,13 @@
-function Draggable(left = 24, top = 24) {
+/*
+*   NEW WORK
+****************************************************/
+
+let DESKTOP_ICON_COUNT = 0;
+let START_LEFT = 24;
+let START_TOP = 24;
+
+
+function Draggable(left = START_LEFT, top = START_TOP) {
     this.element = document.createElement('div');
     this.element.style.left = left + 'px';
     this.element.style.top = top + 'px';
@@ -7,6 +16,12 @@ function Draggable(left = 24, top = 24) {
     this.pos3 = 0;
     this.pos4 = 0;
     this.element.onmousedown = this.mouseDown.bind(this); // Need to bind to Draggable, otherwise this = the element
+    START_LEFT += 160;
+    DESKTOP_ICON_COUNT++;
+    if (DESKTOP_ICON_COUNT%3 > 1) {
+        START_LEFT = 24;
+        START_TOP += 160;
+    }
 }
 
 Draggable.prototype.stopDrag = function() {
@@ -51,21 +66,29 @@ function DesktopIcon(image, text, left, top) {
     this.element.appendChild(p)
 }
 
-function addToDOM(parentId) {
-    document.getElementById(parentId).appendChild(this.element)
-}
-
 DesktopIcon.prototype = Object.create(Draggable.prototype);
 DesktopIcon.prototype.constructor = DesktopIcon;
 
-DesktopIcon.prototype.addToDom = addToDOM;
+DesktopIcon.prototype.addToDom = function(parentId) {
+    document.getElementById(parentId).appendChild(this.element)
+};
 
 const test = new DesktopIcon("folder", "folder");
 test.addToDom('home')
-const test2 = new DesktopIcon("folder", "test2", 240);
+const test2 = new DesktopIcon("folder", "test2");
 test2.addToDom('home')
+const test3 = new DesktopIcon("folder", "test3");
+test3.addToDom('home')
+const test4 = new DesktopIcon("folder", "test4");
+test4.addToDom('home')
+const test5 = new DesktopIcon("folder", "test5");
+test5.addToDom('home')
+const test6 = new DesktopIcon("folder", "test6");
+test6.addToDom('home')
 
-
+/*
+*   OLD WORK
+****************************************************/
 
 const clickables = document.getElementsByClassName("clickable");
 for (let element of clickables) {
