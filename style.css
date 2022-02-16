@@ -73,7 +73,7 @@ a, u {
     width: 100vw;
     /* animation: loading ease 4s; */
 }
-  
+
 .home {
     width: 100%;
     height: 95%;
@@ -113,9 +113,9 @@ a, u {
     position: absolute;
     display: none;
     z-index: 9;
-    transform: translate(-50%, -50%);
-    top: 47%;
-    left: 50%;
+    /* transform: translate(-50%, -50%); */
+    /* top: 47%; */
+    /* left: 50%; */
     height: 850px;
     width: 800px;
     border: 6px solid var(--toolbar-blue);
@@ -408,41 +408,41 @@ a, u {
 /*
 *   Animations
 */
-@keyframes fade-in { 
-    0% { 
-        opacity: 0; 
-    } 
-    100% { 
-        opacity: 1; 
-    } 
-} 
-
-@keyframes fade-out { 
-    0% { 
-        opacity: 1; 
-    } 
-    100% { 
-        opacity: 0; 
-    } 
-} 
-
-@keyframes loading { 
-    0% { 
-        opacity: 0; 
-    } 
-    75% { 
-        opacity: 0; 
+@keyframes fade-in {
+    0% {
+        opacity: 0;
     }
-    100% { 
-        opacity: 1; 
-    } 
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /*
 *    Laptop
 */
 @media only screen and (max-width: 1024px) {
-   
+
 }
 
 /*
@@ -464,7 +464,7 @@ a, u {
         width: 95%;
         height: 90%;
     }
-    
+
     .window-content {
         width: 100%;
         height: calc(100% - 35px);

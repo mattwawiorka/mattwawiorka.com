@@ -7,20 +7,21 @@ let START_LEFT = 24;
 let START_TOP = 24;
 
 
-function Draggable(left = START_LEFT, top = START_TOP) {
-    this.element = document.createElement('div');
+function Draggable(element = null, left = START_LEFT, top = START_TOP, toolbar = false) {
+    this.element = element ?? document.createElement('div');
+
     this.element.style.left = left + 'px';
     this.element.style.top = top + 'px';
+
     this.pos1 = 0;
     this.pos2 = 0;
     this.pos3 = 0;
     this.pos4 = 0;
-    this.element.onmousedown = this.mouseDown.bind(this); // Need to bind to Draggable, otherwise this = the element
-    START_LEFT += 160;
-    DESKTOP_ICON_COUNT++;
-    if (DESKTOP_ICON_COUNT%3 > 1) {
-        START_LEFT = 24;
-        START_TOP += 160;
+
+    if (toolbar) {
+        this.element.children[0].onmousedown = this.mouseDown.bind(this); // Need to bind to Draggable, otherwise this = the element
+    } else {
+        this.element.onmousedown = this.mouseDown.bind(this);
     }
 }
 
@@ -43,6 +44,7 @@ Draggable.prototype.mouseDrag = function(e) {
 Draggable.prototype.mouseDown = function(e) {
     e = e || window.event;
     e.preventDefault();
+    console.log(this)
     this.pos3 = e.clientX;
     this.pos4 = e.clientY;
     document.onmousemove = (e) => {
@@ -51,8 +53,8 @@ Draggable.prototype.mouseDown = function(e) {
     document.onmouseup = this.stopDrag;
 }
 
-function DesktopIcon(image, text, left, top) {
-    Draggable.call(this, left, top);
+function DesktopIcon(image, text, dataWindow, left, top) {
+    Draggable.call(this, null, left, top);
 
     const imageElem = document.createElement('img');
     const p = document.createElement('p');
@@ -64,41 +66,49 @@ function DesktopIcon(image, text, left, top) {
 
     p.innerHTML = text;
     this.element.appendChild(p)
+
+    // Add to DOM
+    document.getElementById('home').appendChild(this.element)
+
+    // Make DesktopIcon clickable
+    this.element.dataWindow = dataWindow;
+
+    console.log(this.element)
+
+    this.element.addEventListener("dblclick", () => {
+        document.getElementById(this.element.dataWindow).style.display = "block";
+    })
+    this.element.addEventListener("touchstart", () => {
+        document.getElementById(this.element.dataWindow).style.display = "block";
+    })
+
+    START_LEFT += 160;
+    if (DESKTOP_ICON_COUNT % 3 > 1) {
+        START_LEFT = 24;
+        START_TOP += 160;
+    }
+    DESKTOP_ICON_COUNT++;
 }
 
-DesktopIcon.prototype = Object.create(Draggable.prototype);
-DesktopIcon.prototype.constructor = DesktopIcon;
+Object.setPrototypeOf(DesktopIcon.prototype, Draggable.prototype)
 
-DesktopIcon.prototype.addToDom = function(parentId) {
-    document.getElementById(parentId).appendChild(this.element)
-};
+const test = new DesktopIcon("folder", "projects", "projects");
 
-const test = new DesktopIcon("folder", "folder");
-test.addToDom('home')
-const test2 = new DesktopIcon("folder", "test2");
-test2.addToDom('home')
-const test3 = new DesktopIcon("folder", "test3");
-test3.addToDom('home')
-const test4 = new DesktopIcon("folder", "test4");
-test4.addToDom('home')
-const test5 = new DesktopIcon("folder", "test5");
-test5.addToDom('home')
-const test6 = new DesktopIcon("folder", "test6");
-test6.addToDom('home')
+const projectsWindow = new Draggable(document.getElementById("projects"), 200, 200, true);
 
 /*
 *   OLD WORK
 ****************************************************/
 
-const clickables = document.getElementsByClassName("clickable");
-for (let element of clickables) {
-    element.addEventListener("dblclick", () => {
-        document.getElementById(element.getAttribute("data-window")).style.display = "block";
-    })
-    element.addEventListener("touchstart", () => {
-        document.getElementById(element.getAttribute("data-window")).style.display = "block";
-    })
-}
+// const clickables = document.getElementsByClassName("clickable");
+// for (let element of clickables) {
+//     element.addEventListener("dblclick", () => {
+//         document.getElementById(element.getAttribute("data-window")).style.display = "block";
+//     })
+//     element.addEventListener("touchstart", () => {
+//         document.getElementById(element.getAttribute("data-window")).style.display = "block";
+//     })
+// }
 
 const x_buttons = document.getElementsByClassName("x-btn");
 for (let element of x_buttons) {
